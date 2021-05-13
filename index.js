@@ -10,13 +10,11 @@ console.log("Welcome to the quick Team Builder. Please follow the on screen dire
 
 let employees = [];
 
-
 function writeIt() {
     let middleBit = ""
     for (let index = 0; index < employees.length; index++) {
         const element = employees[index];
         middleBit += element.card()
-
     }
     let txtToWrite = creation.firstHalf() + middleBit + creation.secondHalf()
     fs.writeFile("./dist/index.html", txtToWrite, function (err) {
@@ -52,8 +50,6 @@ const initTeamManager = () => {
     ).then((answers) => {
         employees.push(new Manager(answers.empID, answers.name, answers.email, answers.officeNum))
         menuForAddingMore()
-
-
     })
 }
 
@@ -64,7 +60,6 @@ const menuForAddingMore = () => {
         message: 'Select another kind of employee to add, or exit with "Done"',
         choices: ['Engineer', 'Intern', 'Done'],
     }).then((answer) => {
-
         switch (answer.choice) {
             case 'Engineer':
                 engineerPrompt()
@@ -138,5 +133,4 @@ const internPrompt = () => {
         menuForAddingMore()
     })
 }
-
 initTeamManager()
